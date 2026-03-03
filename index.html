@@ -1,4 +1,26 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════╗
+║           LUMIÈRE RESTAURANT — WEBSITE TEMPLATE             ║
+║                                                              ║
+║  HOW TO REUSE FOR A NEW CLIENT:                              ║
+║  1. Find & replace "Lumière" with new restaurant name        ║
+║  2. Find & replace "919999999999" with real WhatsApp number  ║
+║  3. Find & replace "hello@lumiere.com" with real email       ║
+║  4. Find & replace "+91 99999 99999" with real phone         ║
+║  5. Find & replace "123 Fine Dine Street" with real address  ║
+║  6. Update Google Maps iframe src (search for TEMPLATE NOTE) ║
+║  7. Swap Unsplash image URLs with real restaurant photos     ║
+║  8. Update menu items, prices, and drink names               ║
+║  9. Update opening hours table                               ║
+║  10. Update footer year and social links                     ║
+║                                                              ║
+║  COLOR SCHEME (CSS variables in :root):                      ║
+║  --orange: #D4622A  (brand accent — change to match brand)   ║
+║  --dark:   #1A1410  (backgrounds)                            ║
+║  --cream:  #F9F4EE  (light sections)                         ║
+╚══════════════════════════════════════════════════════════════╝
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -715,6 +737,128 @@ footer { background: var(--dark); padding: 80px 64px 0; }
   section { padding: var(--section-pad); }
 }
 
+
+/* ══════════════════════════════════════════
+   OPENING HOURS
+   ══════════════════════════════════════════ */
+#hours {
+  background: var(--dark);
+  padding: var(--section-pad);
+}
+.hours-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.hours-sh-label {
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--orange);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.hours-sh-label::before { content: ''; width: 24px; height: 1px; background: var(--orange); }
+.hours-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 16px;
+}
+.hours-h2 em { font-style: italic; color: var(--orange); }
+.hours-note { font-size: 14px; color: rgba(255,255,255,.35); line-height: 1.7; }
+.hours-table { width: 100%; border-collapse: collapse; }
+.hours-table tr {
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: background var(--ease);
+}
+.hours-table tr:hover { background: rgba(212,98,42,.05); }
+.hours-table td {
+  padding: 16px 0;
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+}
+.hours-table td:first-child {
+  font-weight: 400;
+  color: rgba(255,255,255,.75);
+  letter-spacing: 1px;
+}
+.hours-table td:last-child { text-align: right; }
+.hours-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(74,124,89,.15);
+  border: 1px solid rgba(74,124,89,.3);
+  color: #7ec99a;
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 2px;
+}
+.hours-badge::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #7ec99a;
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.hours-closed { color: rgba(255,255,255,.25) !important; }
+
+/* ══════════════════════════════════════════
+   GOOGLE MAPS
+   ══════════════════════════════════════════ */
+#location {
+  padding: 0;
+  background: var(--dark2);
+}
+.location-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  min-height: 480px;
+}
+.location-info {
+  padding: 80px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--dark2);
+}
+.location-sh-label {
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--orange);
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.location-sh-label::before { content: ''; width: 24px; height: 1px; background: var(--orange); }
+.location-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3vw, 46px);
+  font-weight: 300; line-height: 1.15; color: #fff; margin-bottom: 32px;
+}
+.location-h2 em { font-style: italic; color: var(--orange); }
+.location-details { display: flex; flex-direction: column; gap: 18px; margin-bottom: 36px; }
+.loc-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.6;
+}
+.loc-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(212,98,42,.12);
+  border: 1px solid rgba(212,98,42,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; margin-top: 2px;
+}
+.loc-item a { color: rgba(255,255,255,.5); transition: color var(--ease); }
+.loc-item a:hover { color: var(--orange); }
+.location-map-side { position: relative; overflow: hidden; }
+.location-map-side iframe {
+  width: 100%; height: 100%; min-height: 480px;
+  border: none; display: block;
+  filter: grayscale(30%) contrast(1.1);
+  transition: filter var(--ease);
+}
+.location-map-side:hover iframe { filter: grayscale(0%) contrast(1); }
+
+/* ── RESPONSIVE: Hours + Location ── */
+@media (max-width: 768px) {
+  .hours-inner { grid-template-columns: 1fr; gap: 40px; }
+  .location-inner { grid-template-columns: 1fr; }
+  .location-info { padding: 60px 28px; }
+  .location-map-side iframe { min-height: 300px; }
+}
+@media (max-width: 480px) {
+  .location-info { padding: 48px 20px; }
+}
+
 </style>
 </head>
 <body>
@@ -746,6 +890,8 @@ footer { background: var(--dark); padding: 80px 64px 0; }
     <li><a href="#about">About</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#location">Location</a></li>
   </ul>
 
   <a href="https://wa.me/919999999999?text=Hi%20Lumi%C3%A8re!%20I%20want%20to%20reserve%20a%20table."
@@ -765,6 +911,8 @@ footer { background: var(--dark); padding: 80px 64px 0; }
   <a href="#about">About</a>
   <a href="#gallery">Gallery</a>
   <a href="#testimonials">Reviews</a>
+  <a href="#hours">Hours</a>
+  <a href="#location">Location</a>
   <a href="https://wa.me/919999999999?text=Hi%20Lumi%C3%A8re!%20I%20want%20to%20reserve%20a%20table."
      target="_blank" rel="noopener" class="nav-cta" style="margin-top:8px">Reserve a Table</a>
 </nav>
@@ -1156,6 +1304,100 @@ footer { background: var(--dark); padding: 80px 64px 0; }
       </div>
     </div>
   </section>
+
+
+<!-- ═══════════════════════════════
+     OPENING HOURS
+     ═══════════════════════════════ -->
+<section id="hours">
+  <div class="hours-inner">
+    <div class="reveal">
+      <div class="hours-sh-label">Visit Us</div>
+      <h2 class="hours-h2">We're open &amp;<br><em>ready for you</em></h2>
+      <p class="hours-note">Walk-ins welcome during off-peak hours.<br>Reservations recommended for weekends.</p>
+      <div style="margin-top:24px"><span class="hours-badge">Open Today</span></div>
+    </div>
+    <div class="reveal d1">
+      <table class="hours-table">
+        <tr>
+          <td>Monday</td>
+          <td>12:00 PM – 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>12:00 PM – 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>12:00 PM – 10:00 PM</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>12:00 PM – 11:00 PM</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>12:00 PM – 12:00 AM</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>11:00 AM – 12:00 AM</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>11:00 AM – 10:00 PM</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     LOCATION / GOOGLE MAPS
+     ═══════════════════════════════ -->
+<section id="location">
+  <div class="location-inner">
+    <div class="location-info reveal">
+      <div class="location-sh-label">Find Us</div>
+      <h2 class="location-h2">In the heart<br>of the <em>city</em></h2>
+      <div class="location-details">
+        <div class="loc-item">
+          <div class="loc-icon">📍</div>
+          <div>123 Fine Dine Street<br>City Centre, Mumbai 400001</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">📞</div>
+          <div><a href="tel:+919999999999">+91 99999 99999</a></div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">✉️</div>
+          <div><a href="mailto:hello@lumiere.com">hello@lumiere.com</a></div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🚗</div>
+          <div>Valet parking available<br>Metro: 2 min walk from City Centre station</div>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=Mumbai+City+Centre" target="_blank" rel="noopener" class="btn-outline-light" style="width:fit-content">
+        Get Directions
+        <svg width="16" height="10" fill="none" viewBox="0 0 16 10"><path d="M1 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+    <div class="location-map-side reveal-r">
+      <!-- 
+        ★ TEMPLATE NOTE: Replace the src below with your actual Google Maps embed URL.
+        Go to maps.google.com → search your address → Share → Embed a map → copy the src URL
+      -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.9!2d72.8777!3d18.9389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1c73a0e7b4d%3A0x2ef0e4b0b5b5b5b5!2sMumbai%20City%20Centre!5e0!3m2!1sen!2sin!4v1234567890"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Lumière Restaurant Location">
+      </iframe>
+    </div>
+  </div>
+</section>
 
   <!-- RESERVATION -->
   <section id="reservation" style="padding:0">
